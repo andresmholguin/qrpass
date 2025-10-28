@@ -14,10 +14,10 @@ export const Login = () => {
         type="password"
         placeholder="Contraseña"
       />
-      <p className="text-sm font-light flex justify-end ">
+      <p className="text-sm font-light flex justify-end cursor-pointer hover:underline ">
         ¿Olvidaste tu cuenta?
       </p>
-      <button className="bg-Primary p-4 mt-8 rounded-md text-Secondary ">
+      <button className="bg-Primary p-4 mt-8 rounded-md text-Secondary cursor-pointer font-semibold hover:bg-gray-900 hover:text-Primary transition-colors ">
         Iniciar Sesión
       </button>
     </div>
