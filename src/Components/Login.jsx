@@ -1,6 +1,6 @@
 export const Login = () => {
   return (
-    <div className="flex flex-col gap-4 w-[400px] mx-auto ">
+    <div className="flex flex-col w-[350px] m-auto gap-4 ">
       <div className="text-3xl font-bold flex justify-center mb-8 ">
         QR Pass
       </div>
