@@ -4,3 +4,4 @@ export { Events } from "./Events";
 export { Login } from "./Login";
 export { Reports } from "./Reports";
 export { Users } from "./Users";
+export { Header } from "./header/Header.jsx";

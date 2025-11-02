@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inicio de Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#fcaf16",
+            "background-dark": "#232b38",
+            "text-light": "#e5e5e5",
+            "input-bg": "#3c4451",
+            "input-border": "#5f6773",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display">
+<div class="flex h-auto min-h-screen w-full flex-col items-center justify-center p-4">
+<div class="w-full max-w-sm">
+<!-- Header -->
+<h1 class="text-text-light tracking-light text-center text-4xl font-bold leading-tight pb-10 pt-6 font-display">Bienvenido</h1>
+<!-- Email Field -->
+<div class="mb-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-light/60">mail</span>
+<input class="form-input w-full rounded-lg border-2 border-input-border bg-input-bg text-text-light placeholder-text-light/60 focus:border-primary focus:ring-primary transition-colors duration-300 h-14 pl-12 pr-4 text-base font-normal leading-normal" placeholder="Email" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="mb-2">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-light/60">lock</span>
+<input class="form-input w-full rounded-lg border-2 border-input-border bg-input-bg text-text-light placeholder-text-light/60 focus:border-primary focus:ring-primary transition-colors duration-300 h-14 pl-12 pr-12 text-base font-normal leading-normal" placeholder="Contraseña" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-text-light/60 hover:text-primary" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end mb-8">
+<a class="text-text-light/80 hover:text-primary text-sm font-normal leading-normal underline transition-colors" href="#">¿Olvidaste tu contraseña?</a>
+</div>
+<!-- Login Button -->
+<div class="flex justify-center pb-8">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-14 px-5 bg-primary text-background-dark text-base font-bold leading-normal tracking-wide hover:bg-primary/90 transition-colors duration-300">
+<span class="truncate">Iniciar Sesión</span>
+</button>
+</div>
+<!-- Registration Link -->
+<div class="text-center">
+<p class="text-text-light/60 text-base font-normal leading-normal">
+          ¿No tienes una cuenta? <a class="font-bold text-primary hover:underline" href="#">Regístrate</a>
+</p>
+</div>
+</div>
+</div>
+</body></html>

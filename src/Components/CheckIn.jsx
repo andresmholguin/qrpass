@@ -1,4 +1,3 @@
-import valleinLogo from "../assets/valleinlogo.png";
 import { useForm } from "react-hook-form";
 import SupabaseClient from "../SupabaseClient";
 
@@ -34,16 +33,15 @@ export const CheckIn = () => {
   };
 
   return (
-    <div className="w-[350px] mx-auto flex flex-col">
-      <picture className=" relative mx-auto mb-4">
-        <img src={valleinLogo} alt="" />
-      </picture>
-      <h1 className="text-4xl text-center mb-8">Registro de Asistente</h1>
-      <p className="font-light">Completa los datos para el registro:</p>
+    <div>
+      <h1 className="text-4xl text-center mt-4">Registro de Asistente</h1>
       <form
-        className="flex flex-col gap-4 mt-4"
+        className="flex flex-col gap-4 mt-4 lg:w-3/4 lg:mx-auto px-2"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <p className="font-sm text-[1.3rem]">
+          Completa los datos para el registro:
+        </p>
         <div className="flex flex-col gap-1">
           <div className="flex justify-between items-center">
             <label className="font-thin text-[1.3rem]" htmlFor="id">
@@ -57,7 +55,7 @@ export const CheckIn = () => {
           </div>
           <input
             className="bg-gray-100 text-Secondary p-2 rounded-md "
-            type="number"
+            type="text"
             inputMode="numeric"
             autoFocus
             {...register("id", { required: true })}
