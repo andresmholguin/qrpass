@@ -16,8 +16,7 @@ export const CheckIn = () => {
       phone_asistants: `${data.countryCode}${data.phone}`,
     };
 
-    console.log(JSON.stringify(registerAdd));
-
+    //Insert data into Supabase
     const { dataAdd, error } = await SupabaseClient.from("Assistants").insert([
       registerAdd,
     ]);

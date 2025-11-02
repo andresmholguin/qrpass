@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import SupabaseClient from "../SupabaseClient";
 
-export const Login = () => {
+export const CreateUsers = () => {
   const {
     register,
     handleSubmit,
@@ -9,35 +9,41 @@ export const Login = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (dataUser) => {
-    //Leer data into Supabase
-    let { data, error } = await SupabaseClient.from("users")
-      .select("*")
-      .eq("user_name", dataUser.user_name)
-      .eq("user_pass", dataUser.password);
+  const onSubmit = async (data) => {
+    const registerUser = {
+      user_name: data.user_name.toLowerCase(),
+      user_pass: data.password,
+    };
+
+    //Insert data into Supabase
+    const { dataAdd, error } = await SupabaseClient.from("users")
+      .insert([
+        {
+          user_name: registerUser.user_name,
+          user_pass: registerUser.user_pass,
+        },
+      ])
+      .select();
 
     if (error) {
-      console.error("Error al consultar:", error);
-      alert("Error al consultar la base de datos.");
-      return;
+      // console.log("Error inserting data:", error);
+      alert("No se pudo registrar el asistente.", error);
     } else {
-      if (!data || data.length === 0) {
-        alert("Usuario o contraseña incorrectos.");
-        return;
-      }
-
-      alert("Acceso exitoso.");
+      // console.log("Data inserted successfully:", dataAdd);
+      alert("Registro exitoso.", dataAdd);
       reset();
     }
   };
 
   return (
     <div className="flex flex-col m-auto gap-4 ">
-      <div className="text-3xl font-bold flex justify-center mb-8 ">Login</div>
+      <div className="text-3xl font-bold flex justify-center mb-8 ">
+        Crear Usuario
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-1">
           <div className="flex justify-between items-center">
-            <label className="font-thin text-[1.3rem]" htmlFor="id">
+            <label className="font-thin text-[1.3rem] lowercase " htmlFor="id">
               Usuario:
             </label>
             {errors.id && (
@@ -50,6 +56,7 @@ export const Login = () => {
             className="bg-gray-100 text-Secondary p-2 rounded-md "
             type="text"
             inputMode="numeric"
+            autoComplete="username"
             autoFocus
             {...register("user_name", { required: true })}
           />
@@ -67,9 +74,9 @@ export const Login = () => {
           </div>
           <input
             className="bg-gray-100 text-Secondary p-2 rounded-md "
-            type="text"
-            inputMode="numeric"
-            autoFocus
+            type="password"
+            inputMode="text"
+            autoComplete="current-password"
             {...register("password", { required: true })}
           />
         </div>
