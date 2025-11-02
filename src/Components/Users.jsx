@@ -1,7 +1,6 @@
-"use client";
 import { useState, useEffect } from "react";
 import SupabaseClient from "../SupabaseClient";
-import { ExportExcel } from "./ExportExcel";
+import ExportExcel from "./ExportExcel";
 
 export const Users = () => {
   const [register, setRegister] = useState([]);
@@ -21,18 +20,13 @@ export const Users = () => {
     if (error) {
       console.log("Error fetching data:", error);
     } else {
-      console.log("Data fetched successfully:", Assistants);
+      // console.log("Data fetched successfully:", Assistants);
       setRegister(Assistants);
     }
   };
 
   const editar = (e) => {
     console.log(e);
-  };
-
-  const exportToExcel = (dataTable) => {
-    <ExportExcel data={dataTable} />;
-    console.log("Exportando datos a Excel...", register);
   };
 
   useEffect(() => {
@@ -48,13 +42,14 @@ export const Users = () => {
     <div className="mb-8">
       <h1 className="text-4xl text-center mb-8">Registros</h1>
       {register.length === 0 && <p className="text-center">Cargando.</p>}
-      <div className="flex justify-end">
-        <button
+      <div className="flex justify-end pb-4">
+        {/* <button
           className="bg-green-700 w-40 p-2 rounded-lg cursor-pointer hover:bg-green-500 mb-4"
-          onClick={() => exportToExcel(register)}
+          onClick={exportToExcel}
         >
           Exportar a Excel
-        </button>
+        </button> */}
+        <ExportExcel data={register} />
       </div>
       <div className="overflow-x-auto mb-8">
         <table className="table-auto w-full border-collapse border border-gray-200">
