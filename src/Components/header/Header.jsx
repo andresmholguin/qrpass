@@ -6,7 +6,7 @@ export const Header = () => {
     <div className="shadow-md pt-4 mb-8">
       <NavBar />
       <picture className="relative mx-auto mb-4">
-        <img src={valleinLogo} alt="Logo Valle In" />
+        <img className="w-full" src={valleinLogo} alt="Logo Valle In" />
       </picture>
     </div>
   );

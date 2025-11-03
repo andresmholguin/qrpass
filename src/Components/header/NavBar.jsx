@@ -171,7 +171,7 @@ export const NavBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content z-1 menu p-2 shadow bg-gray-600 rounded-box w-52 pt-8"
+            className="dropdown-content z-1 menu p-2 shadow bg-gray-700 rounded-box w-52 pt-8"
           >
             <span className="text-center pb-2">{user.user_name}</span>
             {/* <li>
