@@ -21,6 +21,7 @@ export const CreateUsers = () => {
         {
           user_name: registerUser.user_name,
           user_pass: registerUser.user_pass,
+          rol: 1859,
         },
       ])
       .select();
@@ -36,14 +37,14 @@ export const CreateUsers = () => {
   };
 
   return (
-    <div className="flex flex-col m-auto gap-4 ">
-      <div className="text-3xl font-bold flex justify-center mb-8 ">
-        Crear Usuario
+    <div className="flex flex-col m-auto gap-4 w-full lg:w-1/4 lg:mx-auto">
+      <div className="text-3xl font-bold flex justify-center mb-8">
+        Crear Ususario
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="">
         <div className="flex flex-col gap-1">
           <div className="flex justify-between items-center">
-            <label className="font-thin text-[1.3rem] lowercase " htmlFor="id">
+            <label className="font-thin text-[1.3rem]" htmlFor="user_name">
               Usuario:
             </label>
             {errors.id && (
@@ -53,17 +54,17 @@ export const CreateUsers = () => {
             )}
           </div>
           <input
-            className="bg-gray-100 text-Secondary p-2 rounded-md "
+            className="bg-gray-100 text-Secondary p-2 rounded-md lowercase"
             type="text"
-            inputMode="numeric"
-            autoComplete="username"
+            inputMode="text"
             autoFocus
+            autoComplete="username"
             {...register("user_name", { required: true })}
           />
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex justify-between items-center">
-            <label className="font-thin text-[1.3rem]" htmlFor="id">
+            <label className="font-thin text-[1.3rem]" htmlFor="password">
               Contraseña:
             </label>
             {errors.id && (
@@ -80,21 +81,8 @@ export const CreateUsers = () => {
             {...register("password", { required: true })}
           />
         </div>
-        {/* <input
-          className="bg-gray-500/30 p-4 rounded-md  border border-gray-500 font-thin "
-          type="email"
-          placeholder="Correo Electrónico"
-        />
-        <input
-          className="bg-gray-500/30 p-4 rounded-md  border border-gray-500 font-thin  "
-          type="password"
-          placeholder="Contraseña"
-        />
-        <p className="text-sm font-light flex justify-end cursor-pointer hover:underline ">
-          ¿Olvidaste tu cuenta?
-        </p> */}
-        <button className="bg-Primary p-4 mt-8 rounded-md text-Secondary cursor-pointer font-semibold hover:bg-gray-900 hover:text-Primary transition-colors mb-12">
-          Iniciar Sesión
+        <button className="bg-Primary p-4 mt-8 rounded-md text-Secondary w-full cursor-pointer font-semibold hover:bg-gray-900 hover:text-Primary transition-colors mb-12">
+          Guardar
         </button>
       </form>
     </div>

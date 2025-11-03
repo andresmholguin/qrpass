@@ -41,7 +41,9 @@ export const Users = () => {
   return (
     <div className="mb-8">
       <h1 className="text-4xl text-center mb-8">Registros</h1>
-      {register.length === 0 && <p className="text-center">Cargando.</p>}
+      {register.length === 0 && (
+        <span className="loading loading-dots loading-xl"></span>
+      )}
       <div className="flex justify-end pb-4">
         {/* <button
           className="bg-green-700 w-40 p-2 rounded-lg cursor-pointer hover:bg-green-500 mb-4"

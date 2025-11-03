@@ -3,6 +3,7 @@ import SupabaseClient from "../SupabaseClient";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "./store/userStore";
 import { useEffect } from "react";
+import { AlertSuccess } from "./alets/AlertSuccess";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -39,8 +40,8 @@ export const Login = () => {
       const user = data[0];
       useUserStore.getState().createUser(user);
       // localStorage.setItem("user", JSON.stringify(data[0]));
-      alert("Acceso exitoso.");
-
+      // alert("Acceso exitoso.");
+      <AlertSuccess title="Inicio de sesión exitoso!" />;
       reset();
 
       navigate("/reports", { replace: true });
@@ -48,7 +49,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex flex-col m-auto gap-4 w-full lg:w-3/4 lg:mx-auto">
+    <div className="flex flex-col m-auto gap-4 w-full lg:w-1/4 lg:mx-auto">
       <div className="text-3xl font-bold flex justify-center mb-8">Login</div>
       <form onSubmit={handleSubmit(onSubmit)} className="">
         <div className="flex flex-col gap-1">
