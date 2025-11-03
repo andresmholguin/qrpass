@@ -13,6 +13,7 @@ export const CreateUsers = () => {
     const registerUser = {
       user_name: data.user_name.toLowerCase(),
       user_pass: data.password,
+      user_rol: data.rol,
     };
 
     //Insert data into Supabase
@@ -21,7 +22,7 @@ export const CreateUsers = () => {
         {
           user_name: registerUser.user_name,
           user_pass: registerUser.user_pass,
-          rol: 1859,
+          rol: registerUser.user_rol,
         },
       ])
       .select();
@@ -81,6 +82,19 @@ export const CreateUsers = () => {
             {...register("password", { required: true })}
           />
         </div>
+        <select
+          id="rol"
+          className="bg-gray-100 text-Secondary p-3 rounded-md w-full mt-6"
+          {...register("rol", { required: true })}
+          defaultValue=""
+        >
+          <option value="" disabled>
+            Selecciona un rol
+          </option>
+          <option value="1859">Cliente</option>
+          <option value="3245">Registro</option>
+          <option value="2525">Admin</option>
+        </select>
         <button className="bg-Primary p-4 mt-8 rounded-md text-Secondary w-full cursor-pointer font-semibold hover:bg-gray-900 hover:text-Primary transition-colors mb-12">
           Guardar
         </button>

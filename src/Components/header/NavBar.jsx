@@ -16,13 +16,23 @@ export const NavBar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user?.rol === 2525) {
+    if (user?.rol == 2525) {
+      console.log("rol admin");
       setNav([
         { path: "/Reports", link: "Inicio" },
         { path: "/checkin", link: "CheckIn" },
         { path: "/registers", link: "Registros" },
         { path: "/createuser", link: "Crear usuario" },
       ]);
+      return;
+    }
+    if (user?.rol == 3245) {
+      console.log("rol regist");
+      setNav([
+        { path: "/checkin", link: "CheckIn" },
+        { path: "/registers", link: "Registros" },
+      ]);
+      return;
     } else {
       setNav([{ path: "/Reports", link: "Inicio" }]);
     }
@@ -31,7 +41,7 @@ export const NavBar = () => {
   const closeSession = () => {
     removeUser(); // 🔹 Limpia Zustand
 
-    alert("Sesión cerrada.");
+    // alert("Sesión cerrada.");
     navigate("/");
   };
 

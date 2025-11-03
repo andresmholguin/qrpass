@@ -14,7 +14,7 @@ export const Reports = () => {
     if (error) {
       console.log("Error fetching data:", error);
     } else {
-      console.log("Data fetched successfully:", Assistants);
+      // console.log("Data fetched successfully:", Assistants);
       setRegister(Assistants);
     }
   };
