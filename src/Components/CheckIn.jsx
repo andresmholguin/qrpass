@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import SupabaseClient from "../SupabaseClient";
+import { useState } from "react";
 
 export const CheckIn = () => {
+  const [showAlert, setShowAlert] = useState(false);
   const {
     register,
     handleSubmit,
@@ -25,9 +27,15 @@ export const CheckIn = () => {
       // console.log("Error inserting data:", error);
       alert("No se pudo registrar el asistente.", error);
     } else {
-      // console.log("Data inserted successfully:", dataAdd);
-      alert("Registro exitoso.", dataAdd);
+      console.log("Data inserted successfully:", dataAdd);
+
+      // alert("Registro exitoso.", dataAdd);
+      setShowAlert(true);
+
       reset();
+
+      // Oculta el alert después de unos segundos (opcional)
+      setTimeout(() => setShowAlert(false), 3000);
     }
   };
 
@@ -117,6 +125,29 @@ export const CheckIn = () => {
           Registrar
         </button>
       </form>
+      <div className=" lg:absolute lg:right-20 lg:-mt-25 ">
+        {showAlert && (
+          <div
+            role="alert"
+            className="alert alert-success mt-3 flex items-right gap-2 lg:w-50 "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>¡Registro completado!</span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

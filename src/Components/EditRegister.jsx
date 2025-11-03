@@ -52,9 +52,10 @@ export const EditRegister = () => {
     if (error) {
       alert("❌ No se pudo actualizar el registro.");
       console.error(error);
-    } else {
-      alert("✅ Registro actualizado correctamente.");
     }
+    // } else {
+    //   alert("✅ Registro actualizado correctamente.");
+    // }
 
     navigate("/registers", { replace: true });
   };
