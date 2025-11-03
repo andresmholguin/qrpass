@@ -24,7 +24,10 @@ function App() {
 
         <Route element={<ProtectedRoute isAllowed={!!user} />}>
           <Route path="/createuser" element={<CreateUsers />} />
-          <Route path="/checkin" element={<CheckIn />} />
+          <Route
+            path="/checkin"
+            element={<CheckIn userName={user.user_name} />}
+          />
           <Route path="/registers" element={<Users />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/edit/:id" element={<EditRegister />} />

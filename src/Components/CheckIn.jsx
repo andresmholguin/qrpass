@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import SupabaseClient from "../SupabaseClient";
 import { useState } from "react";
 
-export const CheckIn = () => {
+export const CheckIn = ({ userName }) => {
   const [showAlert, setShowAlert] = useState(false);
   const {
     register,
@@ -16,6 +16,7 @@ export const CheckIn = () => {
       id_document_asistants: data.id,
       name_asistants: data.nombre.toUpperCase(),
       phone_asistants: `${data.countryCode}${data.phone}`,
+      user_create: userName,
     };
 
     //Insert data into Supabase
