@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useUserStore } from "../store/userStore";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Logo from "../../assets/logoQR.svg";
 
 export const NavBar = () => {
   const [nav, setNav] = useState([
@@ -104,7 +105,8 @@ export const NavBar = () => {
             </ul>
           )}
         </div>
-        <a className="btn btn-ghost text-xl">QR PASS</a>
+        {/* <a className="btn btn-ghost text-xl">QR PASS</a> */}
+        <img className="w-50 rounded-xl" src={Logo} alt="Logo QrBoletos" />
       </div>
       <div className="navbar-center hidden lg:flex">
         {user && (
@@ -144,23 +146,6 @@ export const NavBar = () => {
       </div>
       {user && (
         <div className="navbar-end gap-2 dropdown dropdown-end dropdown-bottom">
-          {/* <label tabIndex={0} className="btn bg-Primary text-Secondary m-1">
-            {user.user_name}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 ml-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </label> */}
           <label className="avatar avatar-placeholder">
             <div
               tabIndex={0}
