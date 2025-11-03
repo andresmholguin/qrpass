@@ -14,9 +14,9 @@ export const Users = () => {
   ];
 
   const readApi = async () => {
-    let { data: Assistants, error } = await SupabaseClient.from(
-      "Assistants"
-    ).select("*");
+    let { data: Assistants, error } = await SupabaseClient.from("Assistants")
+      .select("*")
+      .order("created_at", { ascending: false });
     if (error) {
       console.log("Error fetching data:", error);
     } else {
@@ -75,13 +75,13 @@ export const Users = () => {
                 <td className="border px-4 py-2 text-sm">
                   {reg.id_document_asistants}
                 </td>
-                <td className="border px-4 py-2 text-sm">
+                <td className="border px-4 py-2 text-sm text-center">
                   {reg.name_asistants}
                 </td>
-                <td className="border px-4 py-2 text-sm">
+                <td className="border px-4 py-2 text-sm text-center">
                   {reg.phone_asistants}
                 </td>
-                <td className="border px-4 py-2 text-sm">
+                <td className="border px-4 py-2 text-sm text-center">
                   {fechaLocal(reg.created_at)}
                 </td>
                 <td className="border px-4 py-2">
