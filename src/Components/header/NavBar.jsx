@@ -73,7 +73,9 @@ export const NavBar = () => {
             >
               {nav.map((item, i) => (
                 <li key={i}>
-                  <Link to={item.path}>{item.link}</Link>
+                  <Link className="py-4" to={item.path}>
+                    {item.link}
+                  </Link>
                 </li>
               ))}
               {/* <li>
@@ -181,7 +183,9 @@ export const NavBar = () => {
               <Link to="/settings">Configuración</Link>
             </li> */}
             <li>
-              <button onClick={closeSession}>Cerrar Sesión</button>
+              <button className="py-3" onClick={closeSession}>
+                Cerrar Sesión
+              </button>
             </li>
           </ul>
         </div>

@@ -6,3 +6,4 @@ export { Reports } from "./Reports";
 export { Users } from "./Users";
 export { Header } from "./header/Header.jsx";
 export { CreateUsers } from "./CreateUsers";
+export { EditRegister } from "./EditRegister.jsx";

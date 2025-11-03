@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import SupabaseClient from "../SupabaseClient";
 import ExportExcel from "./ExportExcel";
+import { EditRegister } from "./index";
+import { useNavigate } from "react-router-dom";
 
 export const Users = () => {
   const [register, setRegister] = useState([]);
+  const navigate = useNavigate();
 
   const headTable = [
     "Documento",
@@ -25,9 +28,9 @@ export const Users = () => {
     }
   };
 
-  const editar = (e) => {
-    console.log(e);
-  };
+  // const editar = (e) => {
+  //   console.log(e);
+  // };
 
   useEffect(() => {
     readApi();
@@ -60,7 +63,7 @@ export const Users = () => {
               {headTable.map((head, i) => (
                 <th
                   key={i}
-                  className="px-4 py-2 text-left text-sm font-semibold bg-gray-800 text-gray-50 border"
+                  className="text-center px-4 py-2 text-sm font-semibold bg-gray-800 text-gray-50 border"
                 >
                   {head}
                 </th>
@@ -90,13 +93,15 @@ export const Users = () => {
                   <div className="flex flex-wrap gap-2 justify-center">
                     <button
                       className="cursor-pointer bg-Primary text-Secondary px-3 py-1 rounded-lg hover:bg-Secondary hover:text-Primary text-sm"
-                      onClick={() => editar(reg.id_document_asistants)}
+                      onClick={() =>
+                        navigate(`/edit/${reg.id_document_asistants}`)
+                      }
                     >
                       Editar
                     </button>
-                    <button className="cursor-pointer bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-200 hover:text-red-700 text-sm">
+                    {/* <button className="cursor-pointer bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-200 hover:text-red-700 text-sm">
                       Eliminar
-                    </button>
+                    </button> */}
                   </div>
                 </td>
               </tr>

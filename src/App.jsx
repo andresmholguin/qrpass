@@ -6,6 +6,7 @@ import {
   Reports,
   Header,
   CreateUsers,
+  EditRegister,
 } from "./Components/index";
 import { ProtectedRoute } from "./Components/utils/ProtectedRoute";
 import { useUserStore } from "./Components/store/userStore";
@@ -26,6 +27,7 @@ function App() {
           <Route path="/checkin" element={<CheckIn />} />
           <Route path="/registers" element={<Users />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/edit/:id" element={<EditRegister />} />
         </Route>
       </Routes>
     </div>
