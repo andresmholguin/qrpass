@@ -9,22 +9,23 @@ import {
   CreateUsers,
 } from "./Components/index";
 import { ProtectedRoute } from "./Components/utils/ProtectedRoute";
-import { useState } from "react";
 
 function App() {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   return (
     <div className="w-[370px] sm:container flex align-center flex-col lg:px-4 h-full">
       <Header />
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route element={<ProtectedRoute canActivate={true} />}>
+        <Route index element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/registers" element={<Users />} />
           <Route path="/checkin" element={<CheckIn />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/createusers" element={<CreateUsers />} />
+          <Route path="/*" element={<Reports />} />
         </Route>
       </Routes>
     </div>

@@ -35,7 +35,7 @@ export const CheckIn = () => {
     <div>
       <h1 className="text-4xl text-center mt-4">Registro de Asistente</h1>
       <form
-        className="flex flex-col gap-4 mt-4 lg:w-3/4 lg:mx-auto px-2"
+        className="flex flex-col gap-4 my-8 lg:w-3/4 lg:mx-auto px-2"
         onSubmit={handleSubmit(onSubmit)}
       >
         <p className="font-sm text-[1.3rem]">

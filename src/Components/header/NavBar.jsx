@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
+import { useUserStore } from "../store/userStore";
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
+  const removeUser = useUserStore((state) => state.removeUser);
+  const user = useUserStore((state) => state.user);
+  const navigate = useNavigate();
+
+  const closeSession = () => {
+    removeUser(); // 🔹 Limpia Zustand
+
+    alert("Sesión cerrada.");
+    navigate("/");
+  };
+
   return (
     <div className="navbar bg-base-100 shadow-sm rounded-t-xl">
       <div className="navbar-start">
@@ -22,22 +35,22 @@ export const NavBar = () => {
               />{" "}
             </svg>
           </div>
+          {user && (
+            <ul
+              tabIndex="-1"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <Link to="/Reports">Inicio</Link>
+              </li>
+              <li>
+                <Link to="/checkin">CheckIn</Link>
+              </li>
+              <li>
+                <Link to="/registers">Registros</Link>
+              </li>
 
-          <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <Link to="/Reports">Inicio</Link>
-            </li>
-            <li>
-              <Link to="/checkin">CheckIn</Link>
-            </li>
-            <li>
-              <Link to="/registers">Registros</Link>
-            </li>
-
-            {/* <li>
+              {/* <li>
               <a>Parent</a>
               <ul className="p-2">
                 <li>
@@ -48,22 +61,24 @@ export const NavBar = () => {
                 </li>
               </ul>
             </li> */}
-          </ul>
+            </ul>
+          )}
         </div>
         <a className="btn btn-ghost text-xl">QR PASS</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/Reports">Inicio</Link>
-          </li>
-          <li>
-            <Link to="/checkin">CheckIn</Link>
-          </li>
-          <li>
-            <Link to="/registers">Registros</Link>
-          </li>
-          {/* <li>
+        {user && (
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <Link to="/Reports">Inicio</Link>
+            </li>
+            <li>
+              <Link to="/checkin">CheckIn</Link>
+            </li>
+            <li>
+              <Link to="/registers">Registros</Link>
+            </li>
+            {/* <li>
             <details>
               <summary>Registros</summary>
               <ul className="p-2">
@@ -76,11 +91,19 @@ export const NavBar = () => {
               </ul>
             </details>
           </li> */}
-        </ul>
+          </ul>
+        )}
       </div>
-      <div className="navbar-end">
-        <a className="btn bg-Primary text-Secondary">Cerrar Sesión</a>
-      </div>
+      {user && (
+        <div className="navbar-end">
+          <button
+            className="btn bg-Primary text-Secondary"
+            onClick={closeSession}
+          >
+            Cerrar Sesión
+          </button>
+        </div>
+      )}
     </div>
   );
 };
