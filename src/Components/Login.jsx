@@ -2,9 +2,16 @@ import { useForm } from "react-hook-form";
 import SupabaseClient from "../SupabaseClient";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "./store/userStore";
+import { useEffect } from "react";
 
 export const Login = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    if (useUserStore.getState().user) {
+      navigate("/reports", { replace: true });
+    }
+  }, [navigate]);
+
   const {
     register,
     handleSubmit,
