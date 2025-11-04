@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import SupabaseClient from "../SupabaseClient";
 import { useState } from "react";
 
-export const CheckIn = ({ userName }) => {
+export const CheckIn = () => {
   const [showAlert, setShowAlert] = useState(false);
   const {
     register,
@@ -11,12 +11,15 @@ export const CheckIn = ({ userName }) => {
     reset,
   } = useForm({ defaultValues: { countryCode: "+57" } });
 
+  const userStorage = localStorage.getItem("user-storage");
+  const { state } = JSON.parse(userStorage);
+
   const onSubmit = async (data) => {
     const registerAdd = {
       id_document_asistants: data.id,
       name_asistants: data.nombre.toUpperCase(),
       phone_asistants: `${data.countryCode}${data.phone}`,
-      user_create: userName,
+      user_create: state.user.user_name,
     };
 
     //Insert data into Supabase
@@ -113,7 +116,7 @@ export const CheckIn = ({ userName }) => {
               inputMode="tel"
               {...register("phone", {
                 required: true,
-                maxLength: 10,
+                minLength: 10,
                 pattern: /^[0-9]*$/,
               })}
             />
