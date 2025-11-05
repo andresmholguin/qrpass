@@ -24,7 +24,8 @@ export const Reports = () => {
   }, []);
 
   const groupedByDate = register.reduce((acc, curr) => {
-    const date = curr.created_at.split("T")[0]; // solo la fecha
+    const localDate = new Date(curr.created_at);
+    const date = localDate.toLocaleDateString("en-CA"); // solo la fecha
     acc[date] = (acc[date] || 0) + 1;
     return acc;
   }, {});
