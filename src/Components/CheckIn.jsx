@@ -23,7 +23,7 @@ export const CheckIn = () => {
     };
 
     //Insert data into Supabase
-    const { dataAdd, error } = await SupabaseClient.from("Assistants").insert([
+    const { dataAdd, error } = await SupabaseClient.from("Assistantss").insert([
       registerAdd,
     ]);
 
