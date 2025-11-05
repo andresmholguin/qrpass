@@ -29,6 +29,7 @@ function App() {
           <Route path="/reports" element={<Reports />} />
           <Route path="/edit/:id" element={<EditRegister />} />
         </Route>
+        <Route path="*" element={<Login />} />
       </Routes>
     </div>
   );
