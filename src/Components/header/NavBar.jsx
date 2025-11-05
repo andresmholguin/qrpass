@@ -35,7 +35,10 @@ export const NavBar = () => {
       ]);
       return;
     } else {
-      setNav([{ path: "/Reports", link: "Inicio" }]);
+      setNav([
+        { path: "/Reports", link: "Inicio" },
+        { path: "/registers", link: "Registros" },
+      ]);
     }
   }, [user?.rol]);
 
