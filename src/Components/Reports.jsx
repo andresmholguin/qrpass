@@ -8,15 +8,34 @@ export const Reports = () => {
   // const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo"];
   // const ventas = [50, 300, 450, 200, 500];
   const readApi = async () => {
-    let { data: Assistants, error } = await SupabaseClient.from("Assistants")
-      .select("*")
-      .order("created_at", { ascending: false });
-    if (error) {
-      console.log("Error fetching data:", error);
-    } else {
-      // console.log("Data fetched successfully:", Assistants);
-      setRegister(Assistants);
+    const limit = 1000;
+    let allData = [];
+    let from = 0;
+    let to = limit - 1;
+    let finished = false;
+
+    while (!finished) {
+      const { data, error } = await SupabaseClient.from("Assistants")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .range(from, to);
+
+      if (error) {
+        console.error("Error fetching data:", error);
+        break;
+      }
+
+      if (data.length === 0) {
+        finished = true;
+      } else {
+        allData = [...allData, ...data];
+        from += limit;
+        to += limit;
+        if (data.length < limit) finished = true; // último bloque
+      }
     }
+
+    setRegister(allData);
   };
 
   useEffect(() => {
